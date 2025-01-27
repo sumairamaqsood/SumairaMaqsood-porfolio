@@ -2,7 +2,7 @@
 
 ## 🌐 Live Demo
 
-[Visit My Portfolio](https://sumaira-maqsood-porfolio.vercel.app/#contact)
+[Visit My Portfolio](https://sumaira-maqsood-porfolio.vercel.app)
 
 ---
 
