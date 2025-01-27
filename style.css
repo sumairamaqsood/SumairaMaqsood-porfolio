@@ -41,11 +41,24 @@ button {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+body {
+  margin: 0;
+  background-color: var(--bg-body);
+  color: var(--text1);
+  font-size: var(--fs-18);
+  line-height: 1.56;
+  padding-bottom: 5rem;
+  overflow-x: hidden;
+}
+.bg-less-dark {
+  background-color: var(--bg-body2);
+}
+
 h1,
 h2,
 h3,
 p {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 h1,
@@ -53,8 +66,26 @@ h2,
 h3 {
   line-height: 1;
 }
+
+.header-xl {
+  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 0.7rem + 7.681vw, 5.5rem);
+  letter-spacing: 0.028em;
+  line-height: 1.1;
+}
+p {
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.79rem + 0.88vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--text2);
+}
 a {
   transition: color var(--transition);
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 2px;
 }
 a.underline,
 button {
@@ -77,26 +108,7 @@ button {
   background-repeat: repeat-x;
   background-size: 8px 2px;
 }
-p {
-  font-size: 1rem;
-  font-size: clamp(1rem, 0.79rem + 0.88vw, 1.125rem);
-  line-height: 1.5;
-  color: var(--text2);
-}
-.header-xl {
-  font-size: 2.5rem;
-  font-size: clamp(2.5rem, 0.7rem + 7.681vw, 5.5rem);
-  letter-spacing: 0.028em;
-}
-body {
-  margin: 0;
-  background-color: var(--bg-body);
-  color: var(--text1);
-  font-size: var(--fs-18);
-  line-height: 1.56;
-  padding-bottom: 30rem;
-  overflow-x: hidden;
-}
+
 .wrapper {
   width: calc(100% - 2rem);
   max-width: var(--container);
@@ -461,6 +473,11 @@ h1 > span {
   grid-column: 1 / span 2;
   /* justify-self: end; */
 }
+
+.projects__contact.underline {
+  justify-self: center;
+}
+/* self edit */
 .projects__item {
   grid-column: 1 / span 2;
 }
@@ -500,5 +517,220 @@ h1 > span {
 } */
 
 @media (min-width: 37.5em) {
-  
+  .projects__grid {
+    gap: 60px 24px;
+    justify-items: start;
+    text-align: left;
+  }
+  .projects__contact {
+    justify-self: end;
+  }
+  .projects__item {
+    grid-column: span 1; /* span 1 se 1 item 1 column me ayega so tablet pe jo 600 hay space bachega to dusra item automatically us space me khud ko fit krlega easy way  */
+  }
+
+  .projects__headline,
+  .projects__contact {
+    grid-column: span 1;
+  }
+  .projects__contact {
+    align-self: center;
+  }
+  .projects__contact.underline {
+    justify-self: end;
+  }
+  /* self edit  */
+  .projects__tags,
+  .projects__links {
+    display: block;
+  }
+  .projects__tags span {
+    margin-inline-end: 18px;
+  }
+  .projects__links a {
+    margin-inline-end: 30px;
+  }
+}
+
+@media (min-width: 62.5em) {
+  .projects__grid {
+    gap: 70px 30px;
+  }
+  .projects__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  .projects__picture {
+    position: relative;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .projects__picture::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: hsl(0, 0%, 0%);
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+  }
+
+  .projects__item:hover .projects__picture::after {
+    opacity: 0.5;
+  }
+  .projects__item:hover .projects__links {
+    opacity: 1;
+  }
+  .projects__item:focus-within .projects__links {
+    opacity: 1;
+  }
+  .projects__item:focus-within .projects__picture::after {
+    opacity: 0.5;
+  }
+  .projects__image {
+    width: 100%;
+    height: auto;
+  }
+  .projects__links {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-self: center;
+    align-self: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 400ms ease-in-out;
+  }
+  .projects__links:hover ~ .projects__picture::after {
+    opacity: 0.5;
+  }
+  .projects__tags {
+    margin-block-end: 0;
+  }
+}
+
+/* CONTACT */
+
+.contact {
+  position: relative;
+}
+.contact__wrapper {
+  padding-block: 84px;
+}
+.contact__text {
+  text-align: center;
+}
+.contact__headline {
+  margin-block-end: var(--fs-20);
+}
+
+.contact__control {
+  position: relative;
+  margin-block-end: 16px;
+}
+.contact__form {
+}
+
+.contact__control input,
+.contact__control textarea {
+  width: 100%;
+  padding-block: 16px;
+  border: none;
+  border-bottom: 1px solid var(--text1);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--text1);
+}
+.contact__control > *::placeholder {
+  color: var(--text1);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+.contact__control textarea {
+  margin-block-end: 32px;
+}
+
+.contact__control.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.contact__control button {
+  background-color: transparent;
+  border: none;
+}
+.contact__invalid-icon {
+  display: none;
+  width: var(--fs-24);
+  height: var(--fs-24);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: -50% -50%;
+}
+.contact input:focus-visible:invalid ~ .contact__invalid-icon,
+.contact textarea:focus-visible:invalid ~ .contact__invalid-icon {
+  display: inline-block;
+}
+
+.contact textarea:focus-visible:invalid ~ .contact__invalid-icon {
+  top: 1.2rem;
+  right: 1.5rem;
+  translate: none;
+}
+
+.contact__rings {
+  position: absolute;
+  left: 0;
+  bottom: 97px;
+  translate: -75%;
+}
+
+@media (min-width: 37.5em) {
+  .contact__rings {
+    bottom: 47px;
+    translate: -75%;
+  }
+}
+
+@media (min-width: 62.5em) {
+  .contact__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 27.8rem);
+    justify-content: space-between;
+  }
+
+  .contact__headline {
+    margin-block-end: var(--fs-36);
+  }
+  .contact__rings {
+    translate: -40%;
+  }
+}
+
+@media (max-width: 62.49875em) {
+  .contact__wrapper {
+    max-width: 27.8rem;
+  }
+
+  .contact__text {
+    text-align: center;
+  }
+}
+
+footer {
+  padding-block: 40px 60px;
+}
+
+@media (min-width: 37.5em) {
+  footer {
+    padding-block: 30px 40px;
+  }
+}
+
+@media (min-width: 62.5em) {
+  footer {
+    padding-block: 47px 92px;
+  }
 }
