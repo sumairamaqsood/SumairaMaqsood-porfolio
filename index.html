@@ -205,7 +205,7 @@
                         possible.
                     </p>
                 </div>
-                <form action="" class="contact__form">
+                <form id="contactForm" class="contact__form">
                     <div class="contact__control">
                         <label for="name" class="visually-hidden">Name</label>
                         <input type="name" id="name" name="name" placeholder="name" required>
@@ -230,6 +230,7 @@
                         <button type="submit">Send Message </button>
                     </div>
                 </form>
+                <div id="responseMessage"></div> <!-- added this for localhost-->
             </div>
             <img src="/assets/images/pattern-rings.svg" alt="" width="530" height="129" class="contact__rings">
         </section>
@@ -281,6 +282,9 @@
         </div>
 
     </footer>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
