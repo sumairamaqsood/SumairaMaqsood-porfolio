@@ -302,6 +302,7 @@ h1 > span {
     /* width: 322px; */
     height: auto;
     left: auto;
+    top: -40px; /* self edit */
     right: 0;
     translate: 0;
   }
@@ -360,6 +361,7 @@ h1 > span {
     margin-left: -80px;
   }
   .hero__image {
+    top: 0;
     margin-block-start: -199px;
   }
 
@@ -611,7 +613,17 @@ h1 > span {
 }
 
 /* CONTACT */
-
+.alert {
+  width: 100%;
+  background: var(--accent);
+  padding: 10px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  display: none;
+  color: var(--bg-body);
+}
 .contact {
   position: relative;
 }

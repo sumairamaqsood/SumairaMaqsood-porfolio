@@ -65,9 +65,9 @@
 
                 <div class="hero__content">
                     <picture>
-                        <source media="(min-width: 62.5em)" srcset="/assets/images/portfolio-desktop.png" />
-                        <source media="(min-width: 37.5em)" srcset="/assets/images/portfolio-tablet.png" />
-                        <img class="hero__image" src="/assets/images/portfolio-mobile.png"
+                        <source media="(min-width: 62.5em)" srcset="/assets/images/profile-photo-1-desktop.png" />
+                        <source media="(min-width: 37.5em)" srcset="/assets/images/profile-photo-tablet.png" />
+                        <img class="hero__image" src="/assets/images/profile-photo-mobile.png"
                             alt="picture of Sumaira Maqsood" width-="174" height="383" />
                     </picture>
                     <img class="hero__rings" src="/assets/images/pattern-rings.svg" alt="" width="530" height="129">
@@ -75,7 +75,7 @@
                     <div class="hero__text">
                         <h1 class="hero__headline header-xl"> Nice to<br /> meet you! I'm <span>Sumaira Maqsood</span>.
                         </h1>
-                        <p class="hero__description">Based in the PK, I'm a front-end developer passionate about
+                        <p class="hero__description">Based in PK, I'm a front-end developer passionate about
                             building accessible web apps that users love.</p>
                         <a href="#contact" class="hero__contact underline">Contact me</a>
                     </div>
@@ -206,6 +206,7 @@
                     </p>
                 </div>
                 <form id="contactForm" class="contact__form">
+                    <div class="alert">Your Message is received! Thankyou</div>
                     <div class="contact__control">
                         <label for="name" class="visually-hidden">Name</label>
                         <input type="name" id="name" name="name" placeholder="name" required>
@@ -230,7 +231,7 @@
                         <button type="submit">Send Message </button>
                     </div>
                 </form>
-                <div id="responseMessage"></div> <!-- added this for localhost-->
+                <!-- <div id="responseMessage"></div> added this for localhost -->
             </div>
             <img src="/assets/images/pattern-rings.svg" alt="" width="530" height="129" class="contact__rings">
         </section>
@@ -282,7 +283,7 @@
         </div>
 
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 
     <script src="script.js"></script>
 </body>

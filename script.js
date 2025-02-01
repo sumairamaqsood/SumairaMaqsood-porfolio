@@ -1,39 +1,54 @@
-document
-  .getElementById('contactForm')
-  .addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission
+const firebaseConfig = {
+  apiKey: 'AIzaSyAUWv2YD3DI2Uu1Il4P0vZXiu1CisVW3b4',
+  authDomain: 'contactform-5daa2.firebaseapp.com',
+  databaseURL: 'https://contactform-5daa2-default-rtdb.firebaseio.com',
+  projectId: 'contactform-5daa2',
+  storageBucket: 'contactform-5daa2.firebasestorage.app',
+  messagingSenderId: '1047868291041',
+  appId: '1:1047868291041:web:84200196ad8d6d3b8404a0',
+};
 
-    // Get form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+//initialize firebase
+firebase.initializeApp(firebaseConfig);
 
-    // // Validate form fields (optional, since we already use required HTML attributes)
-    // if (!name || !email || !message) {
-    //   alert('Please fill in all fields.');
-    //   return;
-    // }
+//reference database
+var contactFormDB = firebase.database().ref('contactForm');
 
-    // Store the inquiry data in localStorage (so it's available even after page reload)
-    let inquiries = JSON.parse(localStorage.getItem('inquiries')) || [];
-    inquiries.push({ name, email, message });
-    localStorage.setItem('inquiries', JSON.stringify(inquiries));
+document.getElementById('contactForm').addEventListener('submit', submitForm);
 
-    // Show a success message to the user
-    // document.getElementById('responseMessage').innerText =
-    //   'Your inquiry has been submitted successfully!';
-    alert('Your inquiry has been submitted successfully!');
+function submitForm(e) {
+  e.preventDefault();
 
-    // Clear the form after submission
-    document.getElementById('contactForm').reset();
-  });
+  var name = getElementVal('name');
+  var email = getElementVal('email');
+  var message = getElementVal('message');
+  // console.log(name, email, message);
 
-// Function to display stored inquiries
-function displayInquiries() {
-  // Just an example: you could use this function to display stored inquiries somewhere, but it's optional.
+  saveMessages(name, email, message);
+
+  //enable alert
+
+  document.querySelector('.alert').style.display = 'block';
+
+  // remove the alert
+  setTimeout(() => {
+    document.querySelector('.alert').style.display = 'none';
+  }, 1000);
+
+  //reset form
+  document.getElementById('contactForm').reset();
 }
 
-// Display inquiries on page load (if any)
-window.onload = function () {
-  // Call displayInquiries() if you want to show saved inquiries on page load.
+const saveMessages = (name, email, message) => {
+  var newContactForm = contactFormDB.push();
+
+  newContactForm.set({
+    name: name,
+    email: email,
+    message: message,
+  });
+};
+
+const getElementVal = (id) => {
+  return document.getElementById(id).value;
 };
